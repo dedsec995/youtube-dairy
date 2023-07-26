@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "name": "Youtube Dairy",
+    "version": "1.2",
+    "description": "Save anntotate your fav vids from youtube",
+    "permissions": ["activeTab", "scripting"],
+    "icons": {
+        "768": "images/icon.jpeg"
+    },
+    "action": {
+        "default_popup": "html/ytd_pop.html",
+        "default_icon": "images/default.png"
+    },
+    
+    "content_scripts": [
+        {
+            "js": [
+                "scripts/content.js"
+            ],
+            "matches": [
+                "https://developer.chrome.com/docs/extensions/*",
+                "https://youtube.com/*",
+                "https://www.youtube.com/",
+                "https://developer.chrome.com/docs/webstore/*"
+            ]
+        }
+    ]
+}
