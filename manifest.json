@@ -1,28 +1,37 @@
 {
-    "manifest_version": 3,
-    "name": "Youtube Dairy",
-    "version": "1.2",
-    "description": "Save anntotate your fav vids from youtube",
-    "permissions": ["activeTab", "scripting"],
-    "icons": {
-        "768": "images/icon.jpeg"
+  "name": "My YT Bookmarks",
+  "version": "0.1.0",
+  "description": "Saving timestamps in YT videos",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["https://*.youtube.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.youtube.com/*"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/bookmark.png",
+        "assets/play.png",
+        "assets/delete.png",
+        "assets/save.png"
+      ],
+      "matches": ["https://*.youtube.com/*"]
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "16": "assets/ext-icon.png",
+      "24": "assets/ext-icon.png",
+      "32": "assets/ext-icon.png"
     },
-    "action": {
-        "default_popup": "html/ytd_pop.html",
-        "default_icon": "images/default.png"
-    },
-    
-    "content_scripts": [
-        {
-            "js": [
-                "scripts/content.js"
-            ],
-            "matches": [
-                "https://developer.chrome.com/docs/extensions/*",
-                "https://youtube.com/*",
-                "https://www.youtube.com/",
-                "https://developer.chrome.com/docs/webstore/*"
-            ]
-        }
-    ]
+    "default_title": "My YT Bookmarks",
+    "default_popup": "popup.html"
+  },
+  "manifest_version": 3
 }
